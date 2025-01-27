@@ -1,90 +1,77 @@
 "use client";
 
 import { useState } from "react";
-import { User, Stethoscope, Link, Menu } from "lucide-react";
-// import Patient from "./Patient"; // Import your Patient component
-// import Doctor from "./Doctor"; // Import your Doctor component
-// import Links from "./Links"; // Import your Links component
+import { User, Stethoscope, Menu, Calendar, LogOut } from "lucide-react"; // Importing new icons
+import Link from "next/link"; // Use Next.js Link component
 
 const Sidebar: React.FC = () => {
     const [isMinimized, setIsMinimized] = useState(false);
-    const [activeSection, setActiveSection] = useState("Dashboard"); // State to track active section
 
     const toggleSidebar = () => {
         setIsMinimized(!isMinimized);
     };
 
-    const renderContent = () => {
-        switch (activeSection) {
-            case "Patient":
-                // return <Patient />;
-            case "Doctor":
-                // return <Doctor />;
-            case "Links":
-                // return <Links />;
-            default:
-                return (
-                    <div>
-                        <h1 className="text-2xl font-bold">Dashboard</h1>
-                        <p className="mt-4 text-gray-600">
-                            Welcome to your dashboard. Please select an option from the sidebar.
-                        </p>
-                    </div>
-                );
-        }
-    };
-
     return (
-        <div className="flex">
-            {/* Sidebar */}
-            <div
-                className={`h-screen ${isMinimized ? "w-16" : "w-64"
-                    } transition-all duration-300 flex flex-col bg-[#12A5A1] text-white`}
+        <div
+            className={`h-screen  left-0 top-0 ${isMinimized ? "w-20" : "w-64"
+                } transition-all duration-300 flex flex-col bg-gradient-to-r from-teal-400 to-teal-600 text-white shadow-lg z-50`}
+        >
+            {/* Toggle Button */}
+            <button
+                className="p-4 hover:bg-teal-500 focus:outline-none flex items-center justify-start transition-all duration-300"
+                onClick={toggleSidebar}
             >
-                {/* Toggle Button */}
-                <button
-                    className="p-4 hover:bg-[#0E8785] focus:outline-none flex items-center justify-start"
-                    onClick={toggleSidebar}
-                >
-                    <Menu className="text-xl" />
-                </button>
+                <Menu className="text-2xl" />
+            </button>
 
-                {/* Sidebar Content */}
-                <nav className="flex-1">
-                    <ul className="space-y-4 mt-6">
-                        <li className="group">
-                            <button
-                                onClick={() => setActiveSection("Patient")}
-                                className="flex items-center gap-4 p-4 w-full text-left hover:bg-[#0E8785] rounded-md transition"
-                            >
-                                <User className="text-xl" />
-                                {!isMinimized && <span>Patient</span>}
-                            </button>
-                        </li>
-                        <li className="group">
-                            <button
-                                onClick={() => setActiveSection("Doctor")}
-                                className="flex items-center gap-4 p-4 w-full text-left hover:bg-[#0E8785] rounded-md transition"
-                            >
-                                <Stethoscope className="text-xl" />
-                                {!isMinimized && <span>Doctor</span>}
-                            </button>
-                        </li>
-                        <li className="group">
-                            <button
-                                onClick={() => setActiveSection("Links")}
-                                className="flex items-center gap-4 p-4 w-full text-left hover:bg-[#0E8785] rounded-md transition"
-                            >
-                                <Link className="text-xl" />
-                                {!isMinimized && <span>Links</span>}
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            {/* Sidebar Content */}
+            <nav className="flex-1 overflow-y-auto mt-4">
+                <ul className="space-y-3">
+                    {/* Patient Link */}
+                    <li className="group flex flex-col items-center justify-center gap-2">
+                        <Link
+                            href="/dashboard/patient"
+                            className="flex items-center gap-4 p-4 w-full text-left hover:bg-teal-500 rounded-md transition-all duration-200"
+                        >
+                            <User className="text-2xl" />
+                            {!isMinimized && <span className="text-lg font-medium">Patient</span>}
+                        </Link>
+                    </li>
 
-            {/* Main Content */}
-            <div className="flex-1 p-6 bg-gray-100">{renderContent()}</div>
+                    {/* Doctor Link */}
+                    <li className="group flex flex-col items-center justify-center gap-2">
+                        <Link
+                            href="/dashboard/doctor"
+                            className="flex items-center gap-4 p-4 w-full text-left hover:bg-teal-500 rounded-md transition-all duration-200"
+                        >
+                            <Stethoscope className="text-2xl" />
+                            {!isMinimized && <span className="text-lg font-medium">Doctor</span>}
+                        </Link>
+                    </li>
+
+                    {/* Appointment Link */}
+                    <li className="group flex flex-col items-center justify-center gap-2">
+                        <Link
+                            href="/dashboard/appointment"
+                            className="flex items-center gap-4 p-4 w-full text-left hover:bg-teal-500 rounded-md transition-all duration-200"
+                        >
+                            <Calendar className="text-2xl" /> {/* Calendar icon for Appointment */}
+                            {!isMinimized && <span className="text-lg font-medium">Appointment</span>}
+                        </Link>
+                    </li>
+
+                    {/* Logout Link */}
+                    <li className="group flex flex-col items-center justify-center gap-2">
+                        <Link
+                            href="/loginpage"
+                            className="flex items-center gap-4 p-4 w-full text-left hover:bg-teal-500 rounded-md transition-all duration-200"
+                        >
+                            <LogOut className="text-2xl" /> {/* LogOut icon for Logout */}
+                            {!isMinimized && <span className="text-lg font-medium">Logout</span>}
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
         </div>
     );
 };

@@ -1,9 +1,10 @@
 import React from 'react'
+import Patient from '../../components/Patient'
 
 const page = () => {
   return (
-    <div>
-
+    <div className='h-screen'>
+      <Patient />
     </div>
   )
 }
