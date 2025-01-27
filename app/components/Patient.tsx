@@ -5,17 +5,30 @@ import { MagnifyingGlassIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { TiEdit } from "react-icons/ti";
 
 
+// type Patient = {
+//     name: string;
+//     accNo: string;
+//     dob: string;
+//     provider: string;
+//     location: string;
+//     email: string;
+//     phone: string;
+//     address: string;
+//     status: string;
+// };
+
 type Patient = {
-    name: string;
-    accNo: string;
-    dob: string;
-    provider: string;
-    location: string;
-    email: string;
-    phone: string;
-    address: string;
     status: string;
+    name?: string; // Make `name` optional
+    accNo?: string;
+    dob?: string;
+    provider?: string;
+    location?: string;
+    email?: string;
+    phone?: string;
+    address?: string;
 };
+
 
 const Patient: React.FC = () => {
     const [patients, setPatients] = useState<Patient[]>([]);
