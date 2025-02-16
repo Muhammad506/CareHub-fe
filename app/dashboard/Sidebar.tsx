@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { User, Stethoscope, Menu, Calendar, LogOut } from "lucide-react"; // Importing new icons
+import { User,House, Stethoscope, Menu, Calendar, LogOut } from "lucide-react"; // Importing new icons
 import Link from "next/link"; // Use Next.js Link component
 
 const Sidebar: React.FC = () => {
@@ -27,6 +27,15 @@ const Sidebar: React.FC = () => {
             {/* Sidebar Content */}
             <nav className="flex-1 overflow-y-auto mt-4">
                 <ul className="space-y-3">
+                <li className="group flex flex-col items-center justify-center gap-2">
+                        <Link
+                            href="/home"
+                            className="flex items-center gap-4 p-4 w-full text-left hover:bg-teal-500 rounded-md transition-all duration-200"
+                        >
+                            <House className="text-2xl" />
+                            {!isMinimized && <span className="text-lg font-medium">Home</span>}
+                        </Link>
+                    </li>
                     {/* Patient Link */}
                     <li className="group flex flex-col items-center justify-center gap-2">
                         <Link

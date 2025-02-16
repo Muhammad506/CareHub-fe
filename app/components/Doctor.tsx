@@ -22,7 +22,6 @@ const Doctor: React.FC = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);  // New state for updating
     const [currentDoctorIndex, setCurrentDoctorIndex] = useState<number | null>(null);  // Track the current doctor being updated
-
     useEffect(() => {
         const storedDoctors = localStorage.getItem("doctors");
         if (storedDoctors) {
@@ -50,6 +49,7 @@ const Doctor: React.FC = () => {
         setNewDoctor({});
         setIsSidebarOpen(false);
     };
+   
 
     const handleUpdateDoctor = () => {
         if (currentDoctorIndex === null) return;
@@ -261,6 +261,7 @@ const Doctor: React.FC = () => {
                     </tbody>
                 </table>
             </div>
+          
         </div>
     );
 };
