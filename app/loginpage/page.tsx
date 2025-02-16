@@ -550,6 +550,7 @@ export default function Login() {
               width={32}
               height={32}
               className="mr-2"
+              loading='lazy'
             />
             CareHub
           </h2>

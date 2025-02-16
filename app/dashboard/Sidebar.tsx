@@ -29,7 +29,7 @@ const Sidebar: React.FC = () => {
                 <ul className="space-y-3">
                 <li className="group flex flex-col items-center justify-center gap-2">
                         <Link
-                            href="/home"
+                            href="/dashboard/home"
                             className="flex items-center gap-4 p-4 w-full text-left hover:bg-teal-500 rounded-md transition-all duration-200"
                         >
                             <House className="text-2xl" />

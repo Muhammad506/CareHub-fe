@@ -40,7 +40,7 @@
 //         // Remove the user from the users array by index
 //         const updatedUsers = users.filter((_, i) => i !== index);
 //         setUsers(updatedUsers);
-      
+
 //         // Update localStorage with the new users array
 //         localStorage.setItem('users', JSON.stringify(updatedUsers));
 //       };
@@ -105,7 +105,7 @@
 //               />
 //              <div>
 //   <h3 className="font-semibold bg-blue-200 text-sm p-2 text-blue-500 mb-2">Select Follow Up Text</h3>
-  
+
 
 
 //   {/* Select Day (default to today) */}
@@ -250,8 +250,8 @@
 
 
 //         <div className='flex flex-col  border-2 py-2 pt-1 p-2 gap-y-8'>
-      
-  
+
+
 //       <span className='text-center '>
 //       <h1>08:00</h1>
 //       <p className='text-blue-500 font-semibold text-sm'>AM</p>
@@ -292,8 +292,8 @@
 //       <h1>10:15</h1>
 //       <p className='text-blue-500 font-semibold text-sm'>AM</p>
 //       </span>
-    
-  
+
+
 //   </div>
 //         <div className="flex-1 bg-white shadow-md p-4">
 //   <h2 className="text-lg font-semibold mb-4 ml-4">Scheduled Appointments</h2>
@@ -334,7 +334,7 @@
 //          <ModalForm onClose={() => setIsModalOpen(false)} onSave={handleAddUser} />
 //        </div>
 //      </div>
-     
+
 //       )}
 //     </div>
 //   );
@@ -421,7 +421,7 @@
 //           {/* <input type="date" className="w-full p-2 border rounded" value={time} onChange={(e) => setTime(e.target.value)} /> */}
 //           {/* <div className="">
 //             <label className="block mb-2 font-medium">date</label>
-         
+
 //           </div> */}
 
 
@@ -449,7 +449,7 @@
 //             </select>
 //           </div>
 
-         
+
 
 //           <div className="">
 //             <label className="block mb-2 font-medium">Appointment Status</label>
@@ -565,42 +565,42 @@ const App: React.FC = () => {
     setUsers((prevUsers) => [...prevUsers, { name, location, time, appointmentType, appointmentReason, notes, date }]);
   };
   const handleDeleteUser = (index: number) => {
-            // Remove the user from the users array by index
-            const updatedUsers = users.filter((_, i) => i !== index);
-            setUsers(updatedUsers);
-          
-            // Update localStorage with the new users array
-            localStorage.setItem('users', JSON.stringify(updatedUsers));
-          };
+    // Remove the user from the users array by index
+    const updatedUsers = users.filter((_, i) => i !== index);
+    setUsers(updatedUsers);
+
+    // Update localStorage with the new users array
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+  };
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <header className="flex justify-between items-center mb-4">
         <div className='flex gap-2'>
-        {/* <h1 className="text-xl font-bold">Appointments</h1> */}
-        <button
-          className="text-sm font-semibold bg-white text-blue-600 border-2 border-blue-600 rounded-lg px-2 py-1 "
-        //   onClick={() => setIsModalOpen(true)}
-        >
-          Appointments
-        </button>
-        <button
-          className="text-sm font-semibold bg-green-900 text-white border-2  rounded-lg px-2 py-1"
-        //   onClick={() => setIsModalOpen(true)}
-        >
-          Day
-        </button>
-        <button
-          className="text-sm font-semibold bg-white text-orange-600  border-2 border-orange-600 rounded-lg px-2 py-1 "
-        //   onClick={() => setIsModalOpen(true)}
-        >
-          Week
-        </button>
-        <button
-          className="text-sm font-semibold bg-white text-yellow-600 border-2 border-yellow-600 rounded-lg px-2 py-1 "
-        //   onClick={() => setIsModalOpen(true)}
-        >
-         Month
-        </button>
+          {/* <h1 className="text-xl font-bold">Appointments</h1> */}
+          <button
+            className="text-sm font-semibold bg-white text-blue-600 border-2 border-blue-600 rounded-lg px-2 py-1 "
+          //   onClick={() => setIsModalOpen(true)}
+          >
+            Appointments
+          </button>
+          <button
+            className="text-sm font-semibold bg-green-900 text-white border-2  rounded-lg px-2 py-1"
+          //   onClick={() => setIsModalOpen(true)}
+          >
+            Day
+          </button>
+          <button
+            className="text-sm font-semibold bg-white text-orange-600  border-2 border-orange-600 rounded-lg px-2 py-1 "
+          //   onClick={() => setIsModalOpen(true)}
+          >
+            Week
+          </button>
+          <button
+            className="text-sm font-semibold bg-white text-yellow-600 border-2 border-yellow-600 rounded-lg px-2 py-1 "
+          //   onClick={() => setIsModalOpen(true)}
+          >
+            Month
+          </button>
         </div>
         <button
           className="text-sm font-semibold bg-blue-600 text-white px-4 py-2 rounded"
@@ -631,145 +631,145 @@ const App: React.FC = () => {
                 onChange={(date) => setSelectedDate(date as Date)}
                 className="mb-4"
               />
-             <div>
-  <h3 className="font-semibold bg-blue-200 text-sm p-2 text-blue-500 mb-2">Select Follow Up Text</h3>
-  
-  
-  {/* Select Day (default to today) */}
-  <div className="mb-4">
-    {/* <label className="block mb-1 font-medium">Select Day</label> */}
-    <select
-      className="w-full p-2 border rounded"
-      defaultValue={new Date().toLocaleDateString()} // Set default to today's date
-      onChange={(e) => {
-        // Handle day selection
-        console.log(e.target.value);
-      }}
-    >
-      <option value={new Date().toLocaleDateString()}>Today</option>
-      <option value="2025-01-27">2025-01-27</option>
-      <option value="2025-01-28">2025-01-28</option>
-      {/* Add more days as needed */}
-    </select>
-  </div>
+              <div>
+                <h3 className="font-semibold bg-blue-200 text-sm p-2 text-blue-500 mb-2">Select Follow Up Text</h3>
 
-  {/* Select Location */}
-  <div className="mb-4">
-    <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Location</label>
-    <select
-      className="w-full p-2 border rounded "
-      onChange={(e) => {
-        // Handle location selection
-        console.log(e.target.value);
-      }}
-    >
-      <option value="location1">Location 1</option>
-      <option value="location2">Location 2</option>
-      <option value="location3">Location 3</option>
-      {/* Add more locations as needed */}
-    </select>
-  </div>
 
-  {/* Provider Checkboxes */}
-  <div className="mb-4">
-    <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Provider</label>
-    <div className="flex flex-col">
-      <label>
-        <input
-          type="checkbox"
-          value="provider1"
-          onChange={(e) => {
-            // Handle provider selection
-            console.log(e.target.value);
-          }}
-        />
-        Provider 1
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="provider2"
-          onChange={(e) => {
-            // Handle provider selection
-            console.log(e.target.value);
-          }}
-        />
-        Provider 2
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="provider3"
-          onChange={(e) => {
-            // Handle provider selection
-            console.log(e.target.value);
-          }}
-        />
-        Provider 3
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="provider4"
-          onChange={(e) => {
-            // Handle provider selection
-            console.log(e.target.value);
-          }}
-        />
-        Provider 4
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="provider5"
-          onChange={(e) => {
-            // Handle provider selection
-            console.log(e.target.value);
-          }}
-        />
-        Provider 5
-      </label>
-    </div>
-  </div>
+                {/* Select Day (default to today) */}
+                <div className="mb-4">
+                  {/* <label className="block mb-1 font-medium">Select Day</label> */}
+                  <select
+                    className="w-full p-2 border rounded"
+                    defaultValue={new Date().toLocaleDateString()} // Set default to today's date
+                    onChange={(e) => {
+                      // Handle day selection
+                      console.log(e.target.value);
+                    }}
+                  >
+                    <option value={new Date().toLocaleDateString()}>Today</option>
+                    <option value="2025-01-27">2025-01-27</option>
+                    <option value="2025-01-28">2025-01-28</option>
+                    {/* Add more days as needed */}
+                  </select>
+                </div>
 
-  {/* Select Appointment Reason 1 */}
-  <div className="mb-4">
-    <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Appointment Reason</label>
-    <select
-      className="w-full p-2 border rounded"
-      value="all"
-      onChange={(e) => {
-        // Handle reason 1 selection
-        console.log(e.target.value);
-      }}
-    >
-      <option value="all">All</option>
-      <option value="reason1">Reason 1</option>
-      <option value="reason2">Reason 2</option>
-      <option value="reason3">Reason 3</option>
-      {/* Add more options as needed */}
-    </select>
-  </div>
+                {/* Select Location */}
+                <div className="mb-4">
+                  <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Location</label>
+                  <select
+                    className="w-full p-2 border rounded "
+                    onChange={(e) => {
+                      // Handle location selection
+                      console.log(e.target.value);
+                    }}
+                  >
+                    <option value="location1">Location 1</option>
+                    <option value="location2">Location 2</option>
+                    <option value="location3">Location 3</option>
+                    {/* Add more locations as needed */}
+                  </select>
+                </div>
 
-  {/* Select Appointment Reason 2 */}
-  <div className="mb-4">
-    <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Appointment Status</label>
-    <select
-      className="w-full p-2 border rounded"
-      value="all"
-      onChange={(e) => {
-        // Handle reason 2 selection
-        console.log(e.target.value);
-      }}
-    >
-      <option value="all">All</option>
-      <option value="reason1">Reason 1</option>
-      <option value="reason2">Reason 2</option>
-      <option value="reason3">Reason 3</option>
-      {/* Add more options as needed */}
-    </select>
-  </div>
-</div>
+                {/* Provider Checkboxes */}
+                <div className="mb-4">
+                  <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Provider</label>
+                  <div className="flex flex-col">
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="provider1"
+                        onChange={(e) => {
+                          // Handle provider selection
+                          console.log(e.target.value);
+                        }}
+                      />
+                      Provider 1
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="provider2"
+                        onChange={(e) => {
+                          // Handle provider selection
+                          console.log(e.target.value);
+                        }}
+                      />
+                      Provider 2
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="provider3"
+                        onChange={(e) => {
+                          // Handle provider selection
+                          console.log(e.target.value);
+                        }}
+                      />
+                      Provider 3
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="provider4"
+                        onChange={(e) => {
+                          // Handle provider selection
+                          console.log(e.target.value);
+                        }}
+                      />
+                      Provider 4
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value="provider5"
+                        onChange={(e) => {
+                          // Handle provider selection
+                          console.log(e.target.value);
+                        }}
+                      />
+                      Provider 5
+                    </label>
+                  </div>
+                </div>
+
+                {/* Select Appointment Reason 1 */}
+                <div className="mb-4">
+                  <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Appointment Reason</label>
+                  <select
+                    className="w-full p-2 border rounded"
+                    value="all"
+                    onChange={(e) => {
+                      // Handle reason 1 selection
+                      console.log(e.target.value);
+                    }}
+                  >
+                    <option value="all">All</option>
+                    <option value="reason1">Reason 1</option>
+                    <option value="reason2">Reason 2</option>
+                    <option value="reason3">Reason 3</option>
+                    {/* Add more options as needed */}
+                  </select>
+                </div>
+
+                {/* Select Appointment Reason 2 */}
+                <div className="mb-4">
+                  <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Appointment Status</label>
+                  <select
+                    className="w-full p-2 border rounded"
+                    value="all"
+                    onChange={(e) => {
+                      // Handle reason 2 selection
+                      console.log(e.target.value);
+                    }}
+                  >
+                    <option value="all">All</option>
+                    <option value="reason1">Reason 1</option>
+                    <option value="reason2">Reason 2</option>
+                    <option value="reason3">Reason 3</option>
+                    {/* Add more options as needed */}
+                  </select>
+                </div>
+              </div>
 
             </div>
           )}
@@ -777,92 +777,92 @@ const App: React.FC = () => {
 
 
         <div className='flex flex-col  border-2 py-2 pt-6 p-2 gap-y-8'>
-      
-  
-             <span className='text-center '>
-             <h1>08:00</h1>
-             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-             </span>
-             <span className='text-center'>
-             <h1>08:15</h1>
-             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-             </span>
-             <span className='text-center'>
-             <h1>08:30</h1>
-             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-             </span>
-             <span className='text-center'>
-             <h1>08:45</h1>
-             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-             </span>
-             <span className='text-center'>
-             <h1>09:00</h1>
-             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-             </span>
-             <span className='text-center'>
-             <h1>09:15</h1>
-             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-             </span>
-             <span className='text-center'>
-             <h1>09:30</h1>
-             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-             </span>
-             <span className='text-center'>
-             <h1>09:45</h1>
-             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-             </span>
-             <span className='text-center'>
-             <h1>10:00</h1>
+
+
+          <span className='text-center '>
+            <h1>08:00</h1>
             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-            </span>
-            <span className='text-center'>
+          </span>
+          <span className='text-center'>
+            <h1>08:15</h1>
+            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+          </span>
+          <span className='text-center'>
+            <h1>08:30</h1>
+            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+          </span>
+          <span className='text-center'>
+            <h1>08:45</h1>
+            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+          </span>
+          <span className='text-center'>
+            <h1>09:00</h1>
+            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+          </span>
+          <span className='text-center'>
+            <h1>09:15</h1>
+            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+          </span>
+          <span className='text-center'>
+            <h1>09:30</h1>
+            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+          </span>
+          <span className='text-center'>
+            <h1>09:45</h1>
+            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+          </span>
+          <span className='text-center'>
+            <h1>10:00</h1>
+            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+          </span>
+          <span className='text-center'>
             <h1>10:15</h1>
             <p className='text-blue-500 font-semibold text-sm'>AM</p>
-            </span>
-          
-        
-         </div>
+          </span>
+
+
+        </div>
 
         <div className="flex-1 bg-white shadow-md p-4">
-  {/* <h2 className="text-lg font-semibold mb-4 ml-4">Scheduled Appointments</h2> */}
-  <div>
-    {filteredUsers.length === 0 ? (
-      <p className="text-gray-500">No appointments available.</p>
-    ) : (
-      filteredUsers.map((user, index) => (
-        <div
-          key={index}
-          className="p-2 mb-2 bg-yellow-100 rounded shadow-sm group relative" // Add 'group' here
-        >
-          <strong className="text-lg">{user.name}</strong>
-          {/* <div className="text-sm text-gray-600">{user.data}</div> */}
-          <div className="text-xs text-gray-400">{user.date}</div>
+          {/* <h2 className="text-lg font-semibold mb-4 ml-4">Scheduled Appointments</h2> */}
+          <div>
+            {filteredUsers.length === 0 ? (
+              <p className="text-gray-500">No appointments available.</p>
+            ) : (
+              filteredUsers.map((user, index) => (
+                <div
+                  key={index}
+                  className="p-2 mb-2 bg-yellow-100 rounded shadow-sm group relative" // Add 'group' here
+                >
+                  <strong className="text-lg">{user.name}</strong>
+                  {/* <div className="text-sm text-gray-600">{user.data}</div> */}
+                  <div className="text-xs text-gray-400">{user.date}</div>
 
-          {/* Hover Effect - User Data Dropdown */}
-          <div className="absolute top-0 left-20 w-fit hidden group-hover:block p-4 bg-white shadow-lg rounded-md text-sm z-10"> {/* Adjust width here */}
-            <pre className="text-gray-600">{JSON.stringify(user, null, 2)}</pre>
+                  {/* Hover Effect - User Data Dropdown */}
+                  <div className="absolute top-0 left-20 w-fit hidden group-hover:block p-4 bg-white shadow-lg rounded-md text-sm z-10"> {/* Adjust width here */}
+                    <pre className="text-gray-600">{JSON.stringify(user, null, 2)}</pre>
+                  </div>
+                  <AiOutlineDelete
+                    className="text-red-500 cursor-pointer absolute bottom-4 right-2 text-xl"
+                    onClick={() => handleDeleteUser(index)} // Call delete function on icon click
+                  />
+                </div>
+              ))
+            )}
           </div>
-          <AiOutlineDelete
-                  className="text-red-500 cursor-pointer absolute bottom-4 right-2 text-xl"
-                  onClick={() => handleDeleteUser(index)} // Call delete function on icon click
-                />
         </div>
-      ))
-    )}
-  </div>
-</div>
 
       </div>
 
       {/* Modal */}
       {isModalOpen && (
-       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-       <div className="bg-white p-2 rounded shadow-lg w-4/6"> {/* Increase width here */}
-         <h2 className="text-lg text-center text-white py-2 bg-[#12A5A1] font-bold mb-4">Add Appointment</h2>
-         <ModalForm onClose={() => setIsModalOpen(false)} onSave={handleAddUser} />
-       </div>
-     </div>
-     
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-2 rounded shadow-lg w-4/6"> {/* Increase width here */}
+            <h2 className="text-lg text-center text-white py-2 bg-[#12A5A1] font-bold mb-4">Add Appointment</h2>
+            <ModalForm onClose={() => setIsModalOpen(false)} onSave={handleAddUser} />
+          </div>
+        </div>
+
       )}
     </div>
   );
@@ -901,7 +901,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, onSave }) => {
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 ">
         <div className="mb-4">
           <label className="block mb-2 font-medium">Name</label>
           <input
