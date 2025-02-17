@@ -4,22 +4,9 @@ import React, { useState, useEffect } from "react";
 import { MagnifyingGlassIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { TiEdit } from "react-icons/ti";
 
-
-// type Patient = {
-//     name: string;
-//     accNo: string;
-//     dob: string;
-//     provider: string;
-//     location: string;
-//     email: string;
-//     phone: string;
-//     address: string;
-//     status: string;
-// };
-
 type Patient = {
     status: string;
-    name?: string; // Make `name` optional
+    name?: string;
     accNo?: string;
     dob?: string;
     provider?: string;
@@ -29,22 +16,30 @@ type Patient = {
     address?: string;
 };
 
-
 const Patient: React.FC = () => {
     const [patients, setPatients] = useState<Patient[]>([]);
     const [newPatient, setNewPatient] = useState<Partial<Patient>>({});
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [editPatientIndex, setEditPatientIndex] = useState<number | null>(null);
 
+    // Load patients from localStorage on mount
     useEffect(() => {
         const storedPatients = localStorage.getItem("patients");
-        if (storedPatients) {
-            setPatients(JSON.parse(storedPatients));
+        if (storedPatients && storedPatients !== "undefined") {
+            try {
+                setPatients(JSON.parse(storedPatients) || []);
+            } catch (error) {
+                console.error("Failed to parse patients from localStorage:", error);
+                setPatients([]);
+            }
         }
     }, []);
 
+    // Save patients to localStorage whenever `patients` state updates
     useEffect(() => {
-        localStorage.setItem("patients", JSON.stringify(patients));
+        if (patients.length > 0) {
+            localStorage.setItem("patients", JSON.stringify(patients));
+        }
     }, [patients]);
 
     const handleAddPatient = () => {
@@ -53,13 +48,13 @@ const Patient: React.FC = () => {
             return;
         }
 
-        setPatients((prev) => [
-            ...prev,
-            {
-                ...newPatient,
-                status: newPatient.status || "ACTIVE",
-            } as Patient,
-        ]);
+        const updatedPatients = [...patients, { ...newPatient, status: "ACTIVE" }];
+        setPatients(updatedPatients);
+        localStorage.setItem("patients", JSON.stringify(updatedPatients)); // Save immediately
+
+        console.log("Patients after adding:", updatedPatients);
+        console.log("Stored in localStorage:", localStorage.getItem("patients"));
+
         setNewPatient({});
         setIsSidebarOpen(false);
     };
@@ -74,12 +69,10 @@ const Patient: React.FC = () => {
         if (editPatientIndex === null) return;
 
         const updatedPatients = [...patients];
-        updatedPatients[editPatientIndex] = {
-            ...newPatient,
-            status: newPatient.status || "ACTIVE",
-        };
-
+        updatedPatients[editPatientIndex] = { ...newPatient, status: "ACTIVE" };
         setPatients(updatedPatients);
+        localStorage.setItem("patients", JSON.stringify(updatedPatients));
+
         setNewPatient({});
         setIsSidebarOpen(false);
         setEditPatientIndex(null);
@@ -88,7 +81,9 @@ const Patient: React.FC = () => {
     const handleDeletePatient = (index: number) => {
         const updatedPatients = patients.filter((_, i) => i !== index);
         setPatients(updatedPatients);
+        localStorage.setItem("patients", JSON.stringify(updatedPatients));
     };
+
 
     return (
         <div className="p-6 bg-gray-100 mx-auto min-h-screen border-black border-l">

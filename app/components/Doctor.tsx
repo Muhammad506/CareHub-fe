@@ -20,8 +20,9 @@ const Doctor: React.FC = () => {
     const [doctors, setDoctors] = useState<Doctor[]>([]);
     const [newDoctor, setNewDoctor] = useState<Partial<Doctor>>({});
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isUpdating, setIsUpdating] = useState(false);  // New state for updating
-    const [currentDoctorIndex, setCurrentDoctorIndex] = useState<number | null>(null);  // Track the current doctor being updated
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [currentDoctorIndex, setCurrentDoctorIndex] = useState<number | null>(null);
+
     useEffect(() => {
         const storedDoctors = localStorage.getItem("doctors");
         if (storedDoctors) {
@@ -29,9 +30,9 @@ const Doctor: React.FC = () => {
         }
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem("doctors", JSON.stringify(doctors));
-    }, [doctors]);
+    const updateLocalStorage = (updatedDoctors: Doctor[]) => {
+        localStorage.setItem("doctors", JSON.stringify(updatedDoctors));
+    };
 
     const handleAddDoctor = () => {
         if (!newDoctor.name || !newDoctor.accNo) {
@@ -39,26 +40,28 @@ const Doctor: React.FC = () => {
             return;
         }
 
-        setDoctors((prev) => [
-            ...prev,
-            {
-                ...newDoctor,
-                status: newDoctor.status || "ACTIVE",
-            } as Doctor,
-        ]);
+        const updatedDoctors = [
+            ...doctors,
+            { ...newDoctor, status: newDoctor.status || "ACTIVE" } as Doctor,
+        ];
+
+        setDoctors(updatedDoctors);
+        updateLocalStorage(updatedDoctors);
         setNewDoctor({});
         setIsSidebarOpen(false);
     };
-   
 
     const handleUpdateDoctor = () => {
         if (currentDoctorIndex === null) return;
 
-        setDoctors((prev) => {
-            const updatedDoctors = [...prev];
-            updatedDoctors[currentDoctorIndex] = { ...newDoctor, status: newDoctor.status || "ACTIVE" } as Doctor;
-            return updatedDoctors;
-        });
+        const updatedDoctors = [...doctors];
+        updatedDoctors[currentDoctorIndex] = {
+            ...newDoctor,
+            status: newDoctor.status || "ACTIVE",
+        } as Doctor;
+
+        setDoctors(updatedDoctors);
+        updateLocalStorage(updatedDoctors);
         setNewDoctor({});
         setIsSidebarOpen(false);
         setIsUpdating(false);
@@ -75,7 +78,9 @@ const Doctor: React.FC = () => {
     const handleDeleteDoctor = (index: number) => {
         const updatedDoctors = doctors.filter((_, i) => i !== index);
         setDoctors(updatedDoctors);
+        updateLocalStorage(updatedDoctors);
     };
+
 
     return (
         <div className="p-6 bg-gray-100 mx-auto min-h-screen border-black border-l">
@@ -261,7 +266,7 @@ const Doctor: React.FC = () => {
                     </tbody>
                 </table>
             </div>
-          
+
         </div>
     );
 };
