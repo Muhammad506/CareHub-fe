@@ -78,9 +78,9 @@ const Doctor: React.FC = () => {
     };
 
     return (
-        <div className="p-6 bg-gray-100 mx-auto min-h-screen">
+        <div className="p-6 bg-gray-100 mx-auto min-h-screen border-black border-l">
             {/* Top Section with Separate Background */}
-            <div className="bg-teal-400 p-4 rounded-sm mb-6 shadow-md">
+            <div className="bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] p-4 rounded-sm mb-6 shadow-md">
                 <div className="flex items-center justify-between">
                     <h1 className="text-2xl xl:text-3xl font-semibold text-white">Doctor Management</h1>
 
@@ -92,13 +92,13 @@ const Doctor: React.FC = () => {
                                 placeholder="Search by Name or Account Number"
                                 className="p-2 w-full border rounded-sm focus:outline-none text-sm pl-10"
                             />
-                            <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-teal-400" />
+                            <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A]" />
                         </div>
 
                         {/* Add Doctor Button */}
                         <button
                             onClick={() => setIsSidebarOpen(true)}
-                            className="bg-gradient-to-r from-teal-400 to-teal-500 text-white py-1 px-4 rounded-sm border-white border shadow-md hover:shadow-lg hover:from-teal-500 hover:to-teal-600 transition-all duration-300"
+                            className="bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-white py-1 px-4 rounded-sm border-white border shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-[#1A3A5A]/60 hover:via-[#21547F]/60 hover:to-[#1A3A5A]/60 transition-all duration-300"
                         >
                             + Add Doctor
                         </button>
@@ -201,7 +201,7 @@ const Doctor: React.FC = () => {
                         </button>
                         <button
                             onClick={isUpdating ? handleUpdateDoctor : handleAddDoctor}
-                            className="bg-teal-400 text-white py-2 px-4 rounded-sm hover:bg-teal-500 transition-all duration-500 text-sm"
+                            className="bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-white py-2 px-4 rounded-sm hover:bg-gradient-to-r hover:from-[#1A3A5A]/90 hover:via-[#21547F]/90 hover:to-[#1A3A5A]/90 transition-all duration-500 text-sm"
                         >
                             {isUpdating ? "Update" : "Save"}
                         </button>
@@ -213,7 +213,7 @@ const Doctor: React.FC = () => {
             <div className="overflow-x-auto mt-6">
                 <table className="min-w-full bg-white text-center shadow-lg rounded-lg border-collapse">
                     <thead>
-                        <tr className="bg-gradient-to-r from-teal-400 to-teal-500 text-white">
+                        <tr className="bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-white">
                             <th className="p-2 text-center border-r">Name</th>
                             <th className="p-2 text-center border-r">Acc No</th>
                             <th className="p-2 text-center border-r">DOB</th>
@@ -241,11 +241,11 @@ const Doctor: React.FC = () => {
                                 <td className="p-2 border-r">{doctor.email}</td>
                                 <td className="p-2 border-r">{doctor.phone}</td>
                                 <td className="p-2 border-r">{doctor.address}</td>
-                                <td className="p-2 text-teal-500 border-r text-sm font-semibold">{doctor.status}</td>
+                                <td className="p-2 text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] border-r text-sm font-semibold">{doctor.status}</td>
                                 <td className="p-2">
                                     <button
                                         onClick={() => handleEditDoctor(index)}
-                                        className="text-teal-500 hover:text-teal-600"
+                                        className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] hover:text-#1A3A5A]"
                                     >
                                         <HiOutlinePencilAlt />
                                     </button>

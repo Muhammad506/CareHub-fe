@@ -573,37 +573,37 @@ const App: React.FC = () => {
     localStorage.setItem('users', JSON.stringify(updatedUsers));
   };
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen bg-gray-100 p-4 border-black border-l">
       <header className="flex justify-between items-center mb-4">
         <div className='flex gap-2'>
           {/* <h1 className="text-xl font-bold">Appointments</h1> */}
           <button
-            className="text-sm font-semibold bg-white text-blue-600 border-2 border-blue-600 rounded-lg px-2 py-1 "
+            className="text-sm font-semibold bg-white text-blue-600 border-2 border-blue-600  px-2 py-1 "
           //   onClick={() => setIsModalOpen(true)}
           >
             Appointments
           </button>
           <button
-            className="text-sm font-semibold bg-green-900 text-white border-2  rounded-lg px-2 py-1"
+            className="text-sm font-semibold bg-green-900 text-white border-2   px-2 py-1"
           //   onClick={() => setIsModalOpen(true)}
           >
             Day
           </button>
           <button
-            className="text-sm font-semibold bg-white text-orange-600  border-2 border-orange-600 rounded-lg px-2 py-1 "
+            className="text-sm font-semibold bg-white text-orange-600  border-2 border-orange-600  px-2 py-1 "
           //   onClick={() => setIsModalOpen(true)}
           >
             Week
           </button>
           <button
-            className="text-sm font-semibold bg-white text-yellow-600 border-2 border-yellow-600 rounded-lg px-2 py-1 "
+            className="text-sm font-semibold bg-white text-yellow-600 border-2 border-yellow-600  px-2 py-1 "
           //   onClick={() => setIsModalOpen(true)}
           >
             Month
           </button>
         </div>
         <button
-          className="text-sm font-semibold bg-blue-600 text-white px-4 py-2 rounded"
+          className="text-sm font-semibold bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] hover:bg-gradient-to-r hover:from-[#1A3A5A]/90 hover:via-[#21547F]/90 hover:to-[#1A3A5A]/90 text-white px-4 py-2 "
           onClick={() => setIsModalOpen(true)}
         >
           Add New
@@ -617,7 +617,7 @@ const App: React.FC = () => {
         >
           {/* Toggle Button */}
           <button
-            className="absolute top-0 -right-2 bg-blue-600 text-white font-bold text-sm rounded px-2 py-1 z-10"
+            className="absolute top-0 -right-2 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-white font-bold text-sm rounded px-2 py-1 z-10"
             onClick={() => setIsCalendarCollapsed(!isCalendarCollapsed)}
           >
             {isCalendarCollapsed ? '+' : '-'}
@@ -632,14 +632,14 @@ const App: React.FC = () => {
                 className="mb-4"
               />
               <div>
-                <h3 className="font-semibold bg-blue-200 text-sm p-2 text-blue-500 mb-2">Select Follow Up Text</h3>
+                <h3 className="font-semibold bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white mb-2">Select Follow Up Text</h3>
 
 
                 {/* Select Day (default to today) */}
                 <div className="mb-4">
                   {/* <label className="block mb-1 font-medium">Select Day</label> */}
                   <select
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border "
                     defaultValue={new Date().toLocaleDateString()} // Set default to today's date
                     onChange={(e) => {
                       // Handle day selection
@@ -655,9 +655,9 @@ const App: React.FC = () => {
 
                 {/* Select Location */}
                 <div className="mb-4">
-                  <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Location</label>
+                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">Select Location</label>
                   <select
-                    className="w-full p-2 border rounded "
+                    className="w-full p-2 border  "
                     onChange={(e) => {
                       // Handle location selection
                       console.log(e.target.value);
@@ -672,7 +672,7 @@ const App: React.FC = () => {
 
                 {/* Provider Checkboxes */}
                 <div className="mb-4">
-                  <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Provider</label>
+                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">Select Provider</label>
                   <div className="flex flex-col">
                     <label>
                       <input
@@ -734,9 +734,9 @@ const App: React.FC = () => {
 
                 {/* Select Appointment Reason 1 */}
                 <div className="mb-4">
-                  <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Appointment Reason</label>
+                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">Select Appointment Reason</label>
                   <select
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border "
                     value="all"
                     onChange={(e) => {
                       // Handle reason 1 selection
@@ -753,9 +753,9 @@ const App: React.FC = () => {
 
                 {/* Select Appointment Reason 2 */}
                 <div className="mb-4">
-                  <label className="block mb-1 bg-blue-200 text-sm p-2 text-blue-500 font-medium">Select Appointment Status</label>
+                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">Select Appointment Status</label>
                   <select
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border "
                     value="all"
                     onChange={(e) => {
                       // Handle reason 2 selection
@@ -781,43 +781,43 @@ const App: React.FC = () => {
 
           <span className='text-center '>
             <h1>08:00</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>08:15</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>08:30</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>08:45</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>09:00</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>09:15</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>09:30</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>09:45</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>10:00</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
           <span className='text-center'>
             <h1>10:15</h1>
-            <p className='text-blue-500 font-semibold text-sm'>AM</p>
+            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
           </span>
 
 
@@ -827,12 +827,12 @@ const App: React.FC = () => {
           {/* <h2 className="text-lg font-semibold mb-4 ml-4">Scheduled Appointments</h2> */}
           <div>
             {filteredUsers.length === 0 ? (
-              <p className="text-gray-500">No appointments available.</p>
+              <p className="text-gray-500 font-semibold">No appointments available.</p>
             ) : (
               filteredUsers.map((user, index) => (
                 <div
                   key={index}
-                  className="p-2 mb-2 bg-yellow-100 rounded shadow-sm group relative" // Add 'group' here
+                  className="p-2 mb-2 bg-yellow-50 rounded shadow-sm group relative" // Add 'group' here
                 >
                   <strong className="text-lg">{user.name}</strong>
                   {/* <div className="text-sm text-gray-600">{user.data}</div> */}
@@ -856,9 +856,9 @@ const App: React.FC = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-2 rounded shadow-lg w-4/6"> {/* Increase width here */}
-            <h2 className="text-lg text-center text-white py-2 bg-[#12A5A1] font-bold mb-4">Add Appointment</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
+          <div className="bg-white  rounded shadow-lg w-4/6 my-4 "> {/* Increase width here */}
+            <h2 className="text-lg text-center text-white py-4 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-bold mb-4">Add Appointment</h2>
             <ModalForm onClose={() => setIsModalOpen(false)} onSave={handleAddUser} />
           </div>
         </div>
@@ -901,12 +901,12 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, onSave }) => {
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <div className="grid grid-cols-2 gap-4 ">
+      <div className="grid grid-cols-2 gap-2 p-6 ">
         <div className="mb-4">
           <label className="block mb-2 font-medium">Name</label>
           <input
             type="text"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border "
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -915,7 +915,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, onSave }) => {
         <div className="mb-4">
           <label className="block mb-2 font-medium">Location</label>
           <select
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border "
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           >
@@ -930,7 +930,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, onSave }) => {
           <label className="block mb-2 font-medium">Time</label>
           <input
             type="time"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border "
             value={time}
             onChange={(e) => setTime(e.target.value)}
           />
@@ -939,7 +939,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, onSave }) => {
         <div className="mb-4">
           <label className="block mb-2 font-medium">Appointment Type</label>
           <select
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border "
             value={appointmentType}
             onChange={(e) => setAppointmentType(e.target.value)}
           >
@@ -953,7 +953,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, onSave }) => {
         <div className="mb-4">
           <label className="block mb-2 font-medium">Appointment Reason</label>
           <select
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border "
             value={appointmentReason}
             onChange={(e) => setAppointmentReason(e.target.value)}
           >
@@ -968,33 +968,33 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, onSave }) => {
           <label className="block mb-2 font-medium">Date</label>
           <input
             type="date"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border "
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
 
-        <div className="col-span-2 mb-4">
+        <div className="col-span-2 mb-2">
           <label className="block mb-2 font-medium">Notes</label>
           <textarea
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border "
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
           ></textarea>
         </div>
       </div>
 
-      <div className="flex justify-end space-x-2">
+      <div className="flex justify-end space-x-4 m-4 mb-6">
         <button
           type="button"
-          className="bg-gray-300 text-gray-800 px-4 py-2 rounded"
+          className="bg-gray-300 text-gray-800 font-semibold px-4 py-2 "
           onClick={onClose}
         >
           Cancel
         </button>
         <button
           type="button"
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-white px-4 py-2 "
           onClick={handleSubmit}
         >
           Save
