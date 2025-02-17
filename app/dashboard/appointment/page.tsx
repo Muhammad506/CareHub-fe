@@ -1,4 +1,3 @@
-
 // 'use client';
 // import React, { useState, useEffect } from 'react';
 // import Calendar from 'react-calendar';
@@ -105,8 +104,6 @@
 //               />
 //              <div>
 //   <h3 className="font-semibold bg-blue-200 text-sm p-2 text-blue-500 mb-2">Select Follow Up Text</h3>
-
-
 
 //   {/* Select Day (default to today) */}
 //   <div className="mb-4">
@@ -248,9 +245,7 @@
 //           )}
 //         </div>
 
-
 //         <div className='flex flex-col  border-2 py-2 pt-1 p-2 gap-y-8'>
-
 
 //       <span className='text-center '>
 //       <h1>08:00</h1>
@@ -292,7 +287,6 @@
 //       <h1>10:15</h1>
 //       <p className='text-blue-500 font-semibold text-sm'>AM</p>
 //       </span>
-
 
 //   </div>
 //         <div className="flex-1 bg-white shadow-md p-4">
@@ -424,7 +418,6 @@
 
 //           </div> */}
 
-
 //           <div className="">
 //             <label className="block mb-2 font-medium">Time</label>
 //             <input
@@ -448,8 +441,6 @@
 //               <option value="Routine Checkup">Routine Checkup</option>
 //             </select>
 //           </div>
-
-
 
 //           <div className="">
 //             <label className="block mb-2 font-medium">Appointment Status</label>
@@ -519,29 +510,36 @@
 //   );
 // };
 
-
-
 // export default App;
 
-
-
-'use client';
-import React, { useState, useEffect } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import { AiOutlineDelete } from 'react-icons/ai';
-
+"use client";
+import React, { useState, useEffect } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const App: React.FC = () => {
   const [isCalendarCollapsed, setIsCalendarCollapsed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [users, setUsers] = useState<{ name: string; location: string; time: string; appointmentType: string; appointmentReason: string; notes: string; date: string }[]>([]);
+  const [users, setUsers] = useState<{ 
+    name: string; 
+    location: string; 
+    time: string; 
+    appointmentType: string; 
+    appointmentReason: string; 
+    notes: string; 
+    date: string; 
+  }[]>(() => {
+    const savedUsers = localStorage.getItem('users');
+    return savedUsers ? JSON.parse(savedUsers) : [];
+  });
+  
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [filteredUsers, setFilteredUsers] = useState(users);
 
   // Load data from localStorage on component mount
   useEffect(() => {
-    const savedUsers = localStorage.getItem('users');
+    const savedUsers = localStorage.getItem("users");
     if (savedUsers) {
       setUsers(JSON.parse(savedUsers));
     }
@@ -549,20 +547,33 @@ const App: React.FC = () => {
 
   // Save data to localStorage whenever users state changes
   useEffect(() => {
-    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
 
   // Filter users by selected date
   useEffect(() => {
     if (selectedDate) {
       const formattedDate = selectedDate.toDateString();
-      const filtered = users.filter((user) => new Date(user.date).toDateString() === formattedDate);
+      const filtered = users.filter(
+        (user) => new Date(user.date).toDateString() === formattedDate
+      );
       setFilteredUsers(filtered);
     }
   }, [selectedDate, users]);
 
-  const handleAddUser = (name: string, location: string, time: string, appointmentType: string, appointmentReason: string, notes: string, date: string) => {
-    setUsers((prevUsers) => [...prevUsers, { name, location, time, appointmentType, appointmentReason, notes, date }]);
+  const handleAddUser = (
+    name: string,
+    location: string,
+    time: string,
+    appointmentType: string,
+    appointmentReason: string,
+    notes: string,
+    date: string
+  ) => {
+    setUsers((prevUsers) => [
+      ...prevUsers,
+      { name, location, time, appointmentType, appointmentReason, notes, date },
+    ]);
   };
   const handleDeleteUser = (index: number) => {
     // Remove the user from the users array by index
@@ -570,34 +581,34 @@ const App: React.FC = () => {
     setUsers(updatedUsers);
 
     // Update localStorage with the new users array
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
+    // localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
   return (
     <div className="min-h-screen bg-gray-100 p-4 border-black border-l">
       <header className="flex justify-between items-center mb-4">
-        <div className='flex gap-2'>
+        <div className="flex gap-2">
           {/* <h1 className="text-xl font-bold">Appointments</h1> */}
           <button
             className="text-sm font-semibold bg-white text-blue-600 border-2 border-blue-600  px-2 py-1 "
-          //   onClick={() => setIsModalOpen(true)}
+            //   onClick={() => setIsModalOpen(true)}
           >
             Appointments
           </button>
           <button
             className="text-sm font-semibold bg-green-900 text-white border-2   px-2 py-1"
-          //   onClick={() => setIsModalOpen(true)}
+            //   onClick={() => setIsModalOpen(true)}
           >
             Day
           </button>
           <button
             className="text-sm font-semibold bg-white text-orange-600  border-2 border-orange-600  px-2 py-1 "
-          //   onClick={() => setIsModalOpen(true)}
+            //   onClick={() => setIsModalOpen(true)}
           >
             Week
           </button>
           <button
             className="text-sm font-semibold bg-white text-yellow-600 border-2 border-yellow-600  px-2 py-1 "
-          //   onClick={() => setIsModalOpen(true)}
+            //   onClick={() => setIsModalOpen(true)}
           >
             Month
           </button>
@@ -613,14 +624,16 @@ const App: React.FC = () => {
       <div className="flex">
         {/* Calendar Section */}
         <div
-          className={`transition-all duration-300 ${isCalendarCollapsed ? 'w-12' : 'w-1/4'} bg-white shadow-md relative`}
+          className={`transition-all duration-300 ${
+            isCalendarCollapsed ? "w-12" : "w-1/4"
+          } bg-white shadow-md relative`}
         >
           {/* Toggle Button */}
           <button
             className="absolute top-0 -right-2 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-white font-bold text-sm rounded px-2 py-1 z-10"
             onClick={() => setIsCalendarCollapsed(!isCalendarCollapsed)}
           >
-            {isCalendarCollapsed ? '+' : '-'}
+            {isCalendarCollapsed ? "+" : "-"}
           </button>
 
           {/* Calendar Content */}
@@ -632,8 +645,9 @@ const App: React.FC = () => {
                 className="mb-4"
               />
               <div>
-                <h3 className="font-semibold bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white mb-2">Select Follow Up Text</h3>
-
+                <h3 className="font-semibold bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white mb-2">
+                  Select Follow Up Text
+                </h3>
 
                 {/* Select Day (default to today) */}
                 <div className="mb-4">
@@ -646,7 +660,9 @@ const App: React.FC = () => {
                       console.log(e.target.value);
                     }}
                   >
-                    <option value={new Date().toLocaleDateString()}>Today</option>
+                    <option value={new Date().toLocaleDateString()}>
+                      Today
+                    </option>
                     <option value="2025-01-27">2025-01-27</option>
                     <option value="2025-01-28">2025-01-28</option>
                     {/* Add more days as needed */}
@@ -655,7 +671,9 @@ const App: React.FC = () => {
 
                 {/* Select Location */}
                 <div className="mb-4">
-                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">Select Location</label>
+                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">
+                    Select Location
+                  </label>
                   <select
                     className="w-full p-2 border  "
                     onChange={(e) => {
@@ -672,7 +690,9 @@ const App: React.FC = () => {
 
                 {/* Provider Checkboxes */}
                 <div className="mb-4">
-                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">Select Provider</label>
+                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">
+                    Select Provider
+                  </label>
                   <div className="flex flex-col">
                     <label>
                       <input
@@ -734,7 +754,9 @@ const App: React.FC = () => {
 
                 {/* Select Appointment Reason 1 */}
                 <div className="mb-4">
-                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">Select Appointment Reason</label>
+                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">
+                    Select Appointment Reason
+                  </label>
                   <select
                     className="w-full p-2 border "
                     value="all"
@@ -753,7 +775,9 @@ const App: React.FC = () => {
 
                 {/* Select Appointment Reason 2 */}
                 <div className="mb-4">
-                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">Select Appointment Status</label>
+                  <label className="block mb-1 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] text-sm p-2 text-white font-medium">
+                    Select Appointment Status
+                  </label>
                   <select
                     className="w-full p-2 border "
                     value="all"
@@ -770,64 +794,80 @@ const App: React.FC = () => {
                   </select>
                 </div>
               </div>
-
             </div>
           )}
         </div>
 
-
-        <div className='flex flex-col  border-2 py-2 pt-6 p-2 gap-y-8'>
-
-
-          <span className='text-center '>
+        <div className="flex flex-col  border-2 py-2 pt-6 p-2 gap-y-8">
+          <span className="text-center ">
             <h1>08:00</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>08:15</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>08:30</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>08:45</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>09:00</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>09:15</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>09:30</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>09:45</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>10:00</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-          <span className='text-center'>
+          <span className="text-center">
             <h1>10:15</h1>
-            <p className='text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm'>AM</p>
+            <p className="text-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-semibold text-sm">
+              AM
+            </p>
           </span>
-
-
         </div>
 
         <div className="flex-1 bg-white shadow-md p-4">
           {/* <h2 className="text-lg font-semibold mb-4 ml-4">Scheduled Appointments</h2> */}
           <div>
             {filteredUsers.length === 0 ? (
-              <p className="text-gray-500 font-semibold">No appointments available.</p>
+              <p className="text-gray-500 font-semibold">
+                No appointments available.
+              </p>
             ) : (
               filteredUsers.map((user, index) => (
                 <div
@@ -839,8 +879,12 @@ const App: React.FC = () => {
                   <div className="text-xs text-gray-400">{user.date}</div>
 
                   {/* Hover Effect - User Data Dropdown */}
-                  <div className="absolute top-0 left-20 w-fit hidden group-hover:block p-4 bg-white shadow-lg rounded-md text-sm z-10"> {/* Adjust width here */}
-                    <pre className="text-gray-600">{JSON.stringify(user, null, 2)}</pre>
+                  <div className="absolute top-0 left-20 w-fit hidden group-hover:block p-4 bg-white shadow-lg rounded-md text-sm z-10">
+                    {" "}
+                    {/* Adjust width here */}
+                    <pre className="text-gray-600">
+                      {JSON.stringify(user, null, 2)}
+                    </pre>
                   </div>
                   <AiOutlineDelete
                     className="text-red-500 cursor-pointer absolute bottom-4 right-2 text-xl"
@@ -851,18 +895,23 @@ const App: React.FC = () => {
             )}
           </div>
         </div>
-
       </div>
 
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
-          <div className="bg-white  rounded shadow-lg w-4/6 my-4 "> {/* Increase width here */}
-            <h2 className="text-lg text-center text-white py-4 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-bold mb-4">Add Appointment</h2>
-            <ModalForm onClose={() => setIsModalOpen(false)} onSave={handleAddUser} />
+          <div className="bg-white  rounded shadow-lg w-4/6 my-4 ">
+            {" "}
+            {/* Increase width here */}
+            <h2 className="text-lg text-center text-white py-4 bg-gradient-to-r from-[#1A3A5A] via-[#21547F] to-[#1A3A5A] font-bold mb-4">
+              Add Appointment
+            </h2>
+            <ModalForm
+              onClose={() => setIsModalOpen(false)}
+              onSave={handleAddUser}
+            />
           </div>
         </div>
-
       )}
     </div>
   );
@@ -882,20 +931,36 @@ interface ModalFormProps {
 }
 
 const ModalForm: React.FC<ModalFormProps> = ({ onClose, onSave }) => {
-  const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
-  const [time, setTime] = useState('');
-  const [appointmentType, setAppointmentType] = useState('');
-  const [appointmentReason, setAppointmentReason] = useState('');
-  const [notes, setNotes] = useState('');
-  const [date, setDate] = useState('');
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
+  const [time, setTime] = useState("");
+  const [appointmentType, setAppointmentType] = useState("");
+  const [appointmentReason, setAppointmentReason] = useState("");
+  const [notes, setNotes] = useState("");
+  const [date, setDate] = useState("");
 
   const handleSubmit = () => {
-    if (name && location && time && appointmentType && appointmentReason && notes && date) {
-      onSave(name, location, time, appointmentType, appointmentReason, notes, date);
+    if (
+      name &&
+      location &&
+      time &&
+      appointmentType &&
+      appointmentReason &&
+      notes &&
+      date
+    ) {
+      onSave(
+        name,
+        location,
+        time,
+        appointmentType,
+        appointmentReason,
+        notes,
+        date
+      );
       onClose();
     } else {
-      alert('Please fill all fields');
+      alert("Please fill all fields");
     }
   };
 
